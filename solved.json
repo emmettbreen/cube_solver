@@ -1,69 +1,69 @@
 {
     "f" : {
-        "flu" : "b",
-        "fu" : "b",
-        "fru": "b",
+        "ufl" : "b",
+        "uf" : "b",
+        "urf": "b",
         "fl" : "b",
         "f" : "b",
-        "fr" : "b",
-        "fld" : "b",
-        "fd" : "b",
-        "frd" : "b"
+        "rf" : "b",
+        "dlf" : "b",
+        "df" : "b",
+        "dfr" : "b"
     },
     "u" : {
-        "blu" : "y",
-        "bu" : "y",
-        "bru": "y",
-        "lu" : "y",
-        "u" : "y",
-        "ru" : "y",
-        "flu" : "y",
-        "fu" : "y",
-        "fru" : "y"
+        "ulb" : "y",
+        "ub" : "y",
+        "ubr": "y",
+        "ul" : "y",
+        "u" :"y",
+        "ur" : "y",
+        "ufl" : "y",
+        "uf" : "y",
+        "urf" : "y"
     },
     "b" : {
-        "bld" : "g",
-        "bd" : "g",
-        "brd": "g",
-        "bl" : "g",
+        "dbl" : "g",
+        "db" : "g",
+        "drb": "g",
+        "lb" : "g",
         "b" : "g",
-        "br" : "g",
-        "blu" : "g",
-        "bu" : "g",
-        "bru" : "g"
+        "rb" : "g",
+        "ulb" : "g",
+        "ub" : "g",
+        "ubr" : "g"
     },
     "d" : {
-        "fld" : "w",
-        "fd" : "w",
-        "frd": "w",
-        "ld" : "w",
+        "dlf" : "w",
+        "df" : "w",
+        "dfr": "w",
+        "dl" : "w",
         "d" : "w",
-        "rd" : "w",
-        "bld" : "w",
-        "bd" : "w",
-        "brd" : "w"
+        "dr" : "w",
+        "dbl" : "w",
+        "db" : "w",
+        "drb" : "w"
     },
     "l" : {
-        "blu" : "o",
-        "lu" : "o",
-        "flu": "o",
-        "bl" : "o",
+        "ulb" : "o",
+        "ul" : "o",
+        "ufl": "o",
+        "lb" : "o",
         "l" : "o",
-        "fl" : "o",
-        "bld" : "o",
-        "ld" : "o",
-        "fld" : "o"
+        "lf" : "o",
+        "dbl" : "o",
+        "dl" : "o",
+        "dlf" : "o"
     },
     "r" : {
-        "fru" : "r",
-        "ru" : "r",
-        "bru": "r",
-        "fr" : "r",
+        "urf" : "r",
+        "ur" : "r",
+        "ubr": "r",
+        "rf" : "r",
         "r" : "r",
-        "br" : "r",
-        "frd" : "r",
-        "rd" : "r",
-        "brd" : "r"
+        "rb" : "r",
+        "dfr" : "r",
+        "dr" : "r",
+        "drb" : "r"
     }
 
 }

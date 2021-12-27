@@ -4,30 +4,30 @@
         "f" : {
             "type" : "object",
             "properties" : {
-                "flu" : "string",
-                "fu" : "string",
-                "fru": "string",
+                "ufl" : "string",
+                "uf" : "string",
+                "urf": "string",
                 "fl" : "string",
                 "f" : "string",
-                "fr" : "string",
-                "fld" : "string",
-                "fd" : "string",
-                "frd" : "string"
+                "rf" : "string",
+                "dlf" : "string",
+                "df" : "string",
+                "dfr" : "string"
             }
         },
 
         "u" : {
             "type" : "object",
             "properties" : {
-                "blu" : "string",
-                "bu" : "string",
-                "bru": "string",
-                "lu" : "string",
+                "ulb" : "string",
+                "ub" : "string",
+                "ubr": "string",
+                "ul" : "string",
                 "u" : "string",
-                "ru" : "string",
-                "flu" : "string",
-                "fu" : "string",
-                "fru" : "string"
+                "ur" : "string",
+                "ufl" : "string",
+                "uf" : "string",
+                "urf" : "string"
             }
 
         },
@@ -35,45 +35,45 @@
         "b" : {
             "type" : "object",
             "properties" : {
-                "bld" : "string",
-                "bd" : "string",
-                "brd": "string",
-                "bl" : "string",
+                "dbl" : "string",
+                "db" : "string",
+                "drb": "string",
+                "lb" : "string",
                 "b" : "string",
-                "br" : "string",
-                "blu" : "string",
-                "bu" : "string",
-                "bru" : "string"
+                "rb" : "string",
+                "ulb" : "string",
+                "ub" : "string",
+                "ubr" : "string"
             }
 
         },
         "d" : {
             "type" : "object",
             "properties" : {
-                "fld" : "string",
-                "fd" : "string",
-                "frd": "string",
-                "ld" : "string",
+                "dlf" : "string",
+                "df" : "string",
+                "dfr": "string",
+                "dl" : "string",
                 "d" : "string",
-                "rd" : "string",
-                "bld" : "string",
-                "bd" : "string",
-                "brd" : "string"
+                "dr" : "string",
+                "dbl" : "string",
+                "db" : "string",
+                "drb" : "string"
             }
 
         },
         "l" : {
             "type" : "object",
             "properties" : {
-                "blu" : "string",
-                "lu" : "string",
-                "flu": "string",
-                "bl" : "string",
+                "ulb" : "string",
+                "ul" : "string",
+                "ufl": "string",
+                "lb" : "string",
                 "l" : "string",
-                "fl" : "string",
-                "bld" : "string",
-                "ld" : "string",
-                "fld" : "string"
+                "lf" : "string",
+                "dbl" : "string",
+                "dl" : "string",
+                "dlf" : "string"
             }
 
         },
@@ -81,15 +81,15 @@
         "r" : {
             "type" : "object",
             "properties" : {
-                "fru" : "string",
-                "ru" : "string",
-                "bru": "string",
-                "fr" : "string",
+                "urf" : "string",
+                "ur" : "string",
+                "ubr": "string",
+                "rf" : "string",
                 "r" : "string",
-                "br" : "string",
-                "frd" : "string",
-                "rd" : "string",
-                "brd" : "string"
+                "rb" : "string",
+                "dfr" : "string",
+                "dr" : "string",
+                "drb" : "string"
             }
 
         }
