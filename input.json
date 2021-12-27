@@ -1,0 +1,69 @@
+{
+    "f" : {
+        "flu" : "blue",
+        "fu" : "blue",
+        "fru": "blue",
+        "fl" : "blue",
+        "f" : "blue",
+        "fr" : "blue",
+        "fld" : "blue",
+        "fd" : "blue",
+        "frd" : "blue"
+    },
+    "u" : {
+        "ulb" : "blue",
+        "ub" : "blue",
+        "urb": "blue",
+        "ul" : "blue",
+        "u" : "blue",
+        "ur" : "blue",
+        "ulf" : "blue",
+        "uf" : "blue",
+        "urf" : "blue"
+    },
+    "b" : {
+        "bld" : "blue",
+        "bd" : "blue",
+        "brd": "blue",
+        "bl" : "blue",
+        "b" : "blue",
+        "br" : "blue",
+        "blu" : "blue",
+        "bu" : "blue",
+        "bru" : "blue"
+    },
+    "d" : {
+        "dlf" : "blue",
+        "df" : "blue",
+        "drf": "blue",
+        "dl" : "blue",
+        "d" : "blue",
+        "dr" : "blue",
+        "dlb" : "blue",
+        "db" : "blue",
+        "drb" : "blue"
+    },
+    "l" : {
+        "lbu" : "blue",
+        "lu" : "blue",
+        "lfu": "blue",
+        "lb" : "blue",
+        "l" : "blue",
+        "lf" : "blue",
+        "lbd" : "blue",
+        "ld" : "blue",
+        "lfd" : "blue"
+    },
+    "r" : {
+        "rfu" : "blue",
+        "ru" : "blue",
+        "rbu": "blue",
+        "rf" : "blue",
+        "r" : "blue",
+        "rb" : "blue",
+        "rfd" : "blue",
+        "rd" : "blue",
+        "rbd" : "blue"
+    }
+
+}

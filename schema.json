@@ -1,0 +1,100 @@
+{
+    "type" : "object",
+    "properties" : {
+        "f" : {
+            "type" : "object",
+            "properties" : {
+                "flu" : "string",
+                "fu" : "string",
+                "fru": "string",
+                "fl" : "string",
+                "f" : "string",
+                "fr" : "string",
+                "fld" : "string",
+                "fd" : "string",
+                "frd" : "string"
+            }
+        },
+
+        "u" : {
+            "type" : "object",
+            "properties" : {
+                "ulb" : "string",
+                "ub" : "string",
+                "urb": "string",
+                "ul" : "string",
+                "u" : "string",
+                "ur" : "string",
+                "ulf" : "string",
+                "uf" : "string",
+                "urf" : "string"
+            }
+
+        },
+
+        "b" : {
+            "type" : "object",
+            "properties" : {
+                "bld" : "string",
+                "bd" : "string",
+                "brd": "string",
+                "bl" : "string",
+                "b" : "string",
+                "br" : "string",
+                "blu" : "string",
+                "bu" : "string",
+                "bru" : "string"
+            }
+
+        },
+        "d" : {
+            "type" : "object",
+            "properties" : {
+                "dlf" : "string",
+                "df" : "string",
+                "drf": "string",
+                "dl" : "string",
+                "d" : "string",
+                "dr" : "string",
+                "dlb" : "string",
+                "db" : "string",
+                "drb" : "string"
+            }
+
+        },
+        "l" : {
+            "type" : "object",
+            "properties" : {
+                "lbu" : "string",
+                "lu" : "string",
+                "lfu": "string",
+                "lb" : "string",
+                "l" : "string",
+                "lf" : "string",
+                "lbd" : "string",
+                "ld" : "string",
+                "lfd" : "string"
+            }
+
+        },
+
+        "r" : {
+            "type" : "object",
+            "properties" : {
+                "rfu" : "string",
+                "ru" : "string",
+                "rbu": "string",
+                "rf" : "string",
+                "r" : "string",
+                "rb" : "string",
+                "rfd" : "string",
+                "rd" : "string",
+                "rbd" : "string"
+            }
+
+        }
+
+
+
+    }
+}
