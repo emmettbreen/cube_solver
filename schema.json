@@ -19,15 +19,15 @@
         "u" : {
             "type" : "object",
             "properties" : {
-                "ulb" : "string",
-                "ub" : "string",
-                "urb": "string",
-                "ul" : "string",
+                "blu" : "string",
+                "bu" : "string",
+                "bru": "string",
+                "lu" : "string",
                 "u" : "string",
-                "ur" : "string",
-                "ulf" : "string",
-                "uf" : "string",
-                "urf" : "string"
+                "ru" : "string",
+                "flu" : "string",
+                "fu" : "string",
+                "fru" : "string"
             }
 
         },
@@ -50,30 +50,30 @@
         "d" : {
             "type" : "object",
             "properties" : {
-                "dlf" : "string",
-                "df" : "string",
-                "drf": "string",
-                "dl" : "string",
+                "fld" : "string",
+                "fd" : "string",
+                "frd": "string",
+                "ld" : "string",
                 "d" : "string",
-                "dr" : "string",
-                "dlb" : "string",
-                "db" : "string",
-                "drb" : "string"
+                "rd" : "string",
+                "bld" : "string",
+                "bd" : "string",
+                "brd" : "string"
             }
 
         },
         "l" : {
             "type" : "object",
             "properties" : {
-                "lbu" : "string",
+                "blu" : "string",
                 "lu" : "string",
-                "lfu": "string",
-                "lb" : "string",
+                "flu": "string",
+                "bl" : "string",
                 "l" : "string",
-                "lf" : "string",
-                "lbd" : "string",
+                "fl" : "string",
+                "bld" : "string",
                 "ld" : "string",
-                "lfd" : "string"
+                "fld" : "string"
             }
 
         },
@@ -81,15 +81,15 @@
         "r" : {
             "type" : "object",
             "properties" : {
-                "rfu" : "string",
+                "fru" : "string",
                 "ru" : "string",
-                "rbu": "string",
-                "rf" : "string",
+                "bru": "string",
+                "fr" : "string",
                 "r" : "string",
-                "rb" : "string",
-                "rfd" : "string",
+                "br" : "string",
+                "frd" : "string",
                 "rd" : "string",
-                "rbd" : "string"
+                "brd" : "string"
             }
 
         }
