@@ -3,10 +3,10 @@
 # position
 
 corner_cubies = []
-corner_cubicles = ["flu", "blu", "bru", "fru", "fld", "bld", "brd", "frd"]
+corner_cubicles = ["ufl", "urf", "ubr", "ulb", "dbl", "dlf", "dfr", "drb"]
 
 edge_cubies = []
-edge_cubicles = ["fu", "lu", "bu", "ru", "fl", "bl", "br", "fr", "fd", "ld", "bd", "rd"]
+edge_cubicles = ["ub", "ur", "uf", "ul", "lb", "rb", "rf", "lf", "db", "dr", "df", "dl"]
 
 # orientation
 
@@ -50,16 +50,21 @@ def color_in_cubicle(self, cubicle):
 # returns 0 if first face of cubie (defined by the cubicle) has a desired color
 # returns 1 if second face of cubie (defined by cubicle) has a desired color
 # returns 2 if third face of cubie (defined by cubicle) has a desired color
-# the desired colors are the first faces defined in the cubicle (front and back)
+# the desired colors are the first faces defined in the cubicle (up and down)
+# AF: returns number of clockwise twists from having orientation of 0
+# Requires: len(colors) = 3
 def corner_orientation(self, colors):
     for i in range(len(colors)):
-        if colors[i] == cube["f"]["f"] || colors[i] == cube["b"]["b"]
+        if colors[i] == cube["u"]["u"] || colors[i] == cube["d"]["d"]
             return i
 
     raise Exception("Invalid Configuration: Incorrect corner piece")
 
+# Requires: len(colors) = 2
 def edge_orientation(self, colors):
-    
+    if colors[0] == cube["u"]["u"] || colors[0] == cube["d"]["d"] || colors[1] == cube["b"]["b"] ||  colors[1] == cube["f"]["f"] :
+      return 0
+    return 1
 
 
 # returns cubie corresponding to input colors
