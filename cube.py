@@ -18,7 +18,7 @@ corner_o = []
 
 # returns a dictionary of colors to their desired face
 # a desired face for a color is where that color is the center cubie
-def color_to_face(self):
+def color_to_face():
     colors = ["b", "w", "y", "g", "r", "o"]
     faces = ["f", "u", "b", "d", "l", "r"]
     translator = {}
@@ -27,13 +27,14 @@ def color_to_face(self):
         for f in faces:
             if cube[f][f] == c:
                 face = f
-        if face = "":
+        if face == "":
             raise Exception("Invalid Configuration: no " + c + " face found")
         translator[c] = face
+    return translator
 
 
 # uses json input to fetch colors in each cubicle
-def color_in_cubicle(self, cubicle):
+def color_in_cubicle(cubicle):
     # Returns a list of faces for the current cubicle
     # Example: returns [f, l, u]
     faces = []
@@ -53,22 +54,22 @@ def color_in_cubicle(self, cubicle):
 # the desired colors are the first faces defined in the cubicle (up and down)
 # AF: returns number of clockwise twists from having orientation of 0
 # Requires: len(colors) = 3
-def corner_orientation(self, colors):
+def corner_orientation(colors):
     for i in range(len(colors)):
-        if colors[i] == cube["u"]["u"] || colors[i] == cube["d"]["d"]
+        if colors[i] == cube["u"]["u"] or colors[i] == cube["d"]["d"]:
             return i
 
     raise Exception("Invalid Configuration: Incorrect corner piece")
 
 # Requires: len(colors) = 2
-def edge_orientation(self, colors):
-    if colors[0] == cube["u"]["u"] || colors[0] == cube["d"]["d"] || colors[1] == cube["b"]["b"] ||  colors[1] == cube["f"]["f"] :
+def edge_orientation(colors):
+    if colors[0] == cube["u"]["u"] or colors[0] == cube["d"]["d"] or colors[1] == cube["b"]["b"] or  colors[1] == cube["f"]["f"] :
       return 0
     return 1
 
 
 # returns cubie corresponding to input colors
-def cubie_of_color(self, colors):
+def cubie_of_color(colors):
     cubie = []
     translator = color_to_face()
     for i in colors:
@@ -96,4 +97,26 @@ for cubicle in edge_cubicles:
 ## TODO: VALID CONFIGURATIONS
 
 
-## TODO: ROTATIONS
+## ROTATIONS
+
+
+# Requires: len(corner_cubies) == len(corner_cubicles)
+# Requires: len(edge_cubies) == len(edge_cubicles)
+def R():
+
+    # rotate corner cubie positions
+    affected_c = [6,1,2,7]
+    temp_c = corner_cubies[0]
+    for i in range(len(affected_c) - 2):
+        corner_cubies[affected_c[i]] = corner_cubies[affected_c[i + 1]]
+    corner_cubies[affected_c[3]] = temp_c
+
+    # rotate edge cubie positions
+    affected_e = [1,5,9,6]
+    temp_e = affected_e[0]
+    for i in range(len(affected_e) - 2):
+        edge_cubies[affected_e[i]] = edge_cubies[affected_e[i + 1]]
+    edge_cubies[affected_e[3]] = temp_e
+
+    # rotate corner orientations
+
