@@ -14,6 +14,7 @@ corner_o = []
 edge_o = []
 
 
+
 ## FUNCTIONS
 
 # returns a dictionary of colors to their desired face
@@ -94,8 +95,6 @@ for cubicle in edge_cubicles:
     edge_cubies.append(edge_orientation(color_in_cubicle(cubicle)))
 
 
-## TODO: VALID CONFIGURATIONS
-
 
 ## ROTATIONS
 
@@ -126,27 +125,49 @@ def R():
     affected_c = [6,1,2,7]
     affected_e = [1,5,9,6]
 
+def R_p():
+    affected_c = [7,2,1,6]
+    affected_e = [6,9,5,1]
 
 def F():
     affected_c = [0,1,6,5]
     affected_e = [2,6,10,7]
 
+def F_pr():
+    affected_c = [5,6,1,0]
+    affected_e = [7,10,6,2]
+
 def L():
     affected_c = [0,5,4,3]
     affected_e = [3,7,11,4]
+
+def L_pr():
+    affected_c = [3,4,5,0]
+    affected_e = [4,11,7,3]
 
 def U():
     affected_c = [0,3,2,1]
     affected_e = [0,1,2,3]
 
+def U_pr():
+    affected_c = [1,2,3,0]
+    affected_e = [3,2,1,0]
+
 def B():
     affected_c = [3,4,7,2]
     affected_e = [0,4,8,5]
+
+def B_pr():
+    affected_c = [2,7,4,3]
+    affected_e = [5,8,4,0]
 
 def D():
     affected_c = [6,7,4,5]
     affected_e = [11,10,9,8]
 
+def D_pr():
+    affected_c = [5,4,7,6]]
+    affected_e = [8,9,10,11]
 
 
-
+## TODO: VALID CONFIGURATIONS
