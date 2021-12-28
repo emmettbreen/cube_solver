@@ -13,6 +13,10 @@ edge_cubicles = ["ub", "ur", "uf", "ul", "lb", "rb", "rf", "lf", "db", "dr", "df
 corner_o = []
 edge_o = []
 
+# list of accpeted colors of cubies
+
+colored_cubies = ["wr", "wb", "wo", "wg", "wbr", "wbo", "wgr", "wgo", "br", "bo", "gr", "go", "yr", "yb", "yo", "yg", "ybr", "ybo", "ygr", "ygo"]
+
 
 
 ## FUNCTIONS
@@ -27,9 +31,11 @@ def color_to_face():
         face = ""
         for f in faces:
             if cube[f][f] == c:
-                face = f
+                face = face + f
         if face == "":
-            raise Exception("Invalid Configuration: no " + c + " face found")
+            raise Exception("Invalid Configuration: no " + c + " face")
+        elif len(face) > 1:
+            raise Exception("Invalid Configuration: multiple " + c + " faces")
         translator[c] = face
     return translator
 
@@ -84,16 +90,31 @@ import json
 cube = json.load(open('solved.json',))
 
 # Determines corner cubie positions in corner cubicles
-
 for cubicle in corner_cubicles:
-    corner_cubies.append(cubie_of_color(color_in_cubicle(cubicle)))
-    corner_o.append(corner_orientation(color_in_cubicle(cubicle)))
+    colors = color_in_cubicle(cubicle)
+    try:
+       colored_cubies.index(colors)
+    except Exception:
+        # TODO: reorder colors and try again
+        raise Exception("Invalid Configuration: invalid corner piece")
+    colored_cubies.remove(colors)
+    corner_cubies.append(cubie_of_color(colors))
+    corner_o.append(corner_orientation(colors))
 
 # Determines edge cubie positions in edge cubicles
 for cubicle in edge_cubicles:
-    edge_cubies.append(cubie_of_color(color_in_cubicle(cubicle)))
-    edge_cubies.append(edge_orientation(color_in_cubicle(cubicle)))
+    colors = color_in_cubicle(cubicle)
+    try:
+        colored_cubies.index(colors)
+    except Exception:
+        # TODO: reorder colors and try again
+        raise Exception("Invalid Configuration: invalid edge piece")
+    edge_cubies.append(cubie_of_color(colors))
+    edge_cubies.append(edge_orientation(colors))
 
+# Check validity of cubies
+if colored_cubies != []:
+    raise Exception("Invalid Configuration: this should never be thrown")
 
 
 ## ROTATIONS
