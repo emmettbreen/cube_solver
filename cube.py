@@ -10,8 +10,8 @@ edge_cubicles = ["ub", "ur", "uf", "ul", "lb", "rb", "rf", "lf", "db", "dr", "df
 
 # orientation
 
-edge_o = []
 corner_o = []
+edge_o = []
 
 
 ## FUNCTIONS
@@ -53,6 +53,7 @@ def color_in_cubicle(cubicle):
 # returns 2 if third face of cubie (defined by cubicle) has a desired color
 # the desired colors are the first faces defined in the cubicle (up and down)
 # AF: returns number of clockwise twists from having orientation of 0
+# AF2: returns the number shown on the "numbered face" of the corner cubie
 # Requires: len(colors) = 3
 def corner_orientation(colors):
     for i in range(len(colors)):
@@ -66,6 +67,9 @@ def edge_orientation(colors):
     if colors[0] == cube["u"]["u"] or colors[0] == cube["d"]["d"] or colors[1] == cube["b"]["b"] or  colors[1] == cube["f"]["f"] :
       return 0
     return 1
+
+def corner_orientation(colors):
+
 
 
 # returns cubie corresponding to input colors
@@ -99,24 +103,53 @@ for cubicle in edge_cubicles:
 
 ## ROTATIONS
 
+# Requires: len(affected_c) == len(affected_e) == 4
+# Requires: len(corner_cubies) == len(corner_cubicles) == len(corner_o)
+# Requires: len(edge_cubies) == len(edge_cubicles) == len(edge_o)
+def rotate(affected_c, affected_e):
 
-# Requires: len(corner_cubies) == len(corner_cubicles)
-# Requires: len(edge_cubies) == len(edge_cubicles)
-def R():
-
-    # rotate corner cubie positions
-    affected_c = [6,1,2,7]
-    temp_c = corner_cubies[0]
+    # rotate corner cubie positions and orientations
+    temp_c_p = corner_cubies[affected_c[3]]
+    temo_c_o = corner_o[affected_c[3]]
     for i in range(len(affected_c) - 2):
-        corner_cubies[affected_c[i]] = corner_cubies[affected_c[i + 1]]
-    corner_cubies[affected_c[3]] = temp_c
+        corner_cubies[affected_c[i + 1]] = corner_cubies[affected_c[i]]
+        corner_o[affected_c[i + 1]] = corner_o[affected_c[i]]
+    corner_cubies[affected_c[0]] = temp_c_p
+    corner_o[affected_c[0]] = temp_c_o
 
-    # rotate edge cubie positions
-    affected_e = [1,5,9,6]
-    temp_e = affected_e[0]
+    # rotate edge cubie positions and orientations
+    temp_e_p = edge_cubies[affected_e[3]]
+    temp_e_o = edge_o[affected_e[3]]
     for i in range(len(affected_e) - 2):
-        edge_cubies[affected_e[i]] = edge_cubies[affected_e[i + 1]]
-    edge_cubies[affected_e[3]] = temp_e
+        edge_cubies[affected_e[i + 1]] = edge_cubies[affected_e[i]]
+        edge_o[affected_e[i + 1]] = edge_o[affected_e[i]]
+    edge_cubies[affected_e[0]] = temp_e_p
+    edge_o[affected_e[0]] = temp_e_o
 
-    # rotate corner orientations
+def R():
+    affected_c = [6,1,2,7]
+    affected_e = [1,5,9,6]
+
+def F():
+    affected_c = [0,1,6,5]
+    affected_e = [2,6,10,7]
+
+def L():
+    affected_c = [0,5,4,3]
+    affected_e = [3,7,11,4]
+
+def U():
+    affected_c = [0,3,2,1]
+    affected_e = [0,1,2,3]
+
+def B():
+    affected_c = [3,4,7,2]
+    affected_e = [0,4,8,5]
+
+def D():
+    affected_c = [6,7,4,5]
+    affected_e = [11,10,9,8]
+
+
+
 
