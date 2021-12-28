@@ -68,10 +68,6 @@ def edge_orientation(colors):
       return 0
     return 1
 
-def corner_orientation(colors):
-
-
-
 # returns cubie corresponding to input colors
 def cubie_of_color(colors):
     cubie = []
@@ -129,6 +125,7 @@ def rotate(affected_c, affected_e):
 def R():
     affected_c = [6,1,2,7]
     affected_e = [1,5,9,6]
+
 
 def F():
     affected_c = [0,1,6,5]
