@@ -15,7 +15,9 @@ edge_o = []
 
 # list of accpeted colors of cubies
 
-colored_cubies = ["wr", "wb", "wo", "wg", "wbr", "wbo", "wgr", "wgo", "br", "bo", "gr", "go", "yr", "yb", "yo", "yg", "ybr", "ybo", "ygr", "ygo"]
+possible_corner_cubies = ["yog","ybo", "yrb", "ygr", "wbr", "wob", "wgo", "wrg"]
+possible_edge_cubies = ["wr", "wb", "wo", "wg", "yr", "yb", "yo", "yg", "gr", "rb", "bo", "og"]
+#colored_cubies = ["wr", "wb", "wo", "wg", "wbr", "wbo", "wgr", "wgo", "br", "bo", "gr", "go", "yr", "yb", "yo", "yg", "ybr", "ybo", "ygr", "ygo"]
 
 
 
@@ -92,23 +94,39 @@ cube = json.load(open('solved.json',))
 # Determines corner cubie positions in corner cubicles
 for cubicle in corner_cubicles:
     colors = color_in_cubicle(cubicle)
-    try:
-       colored_cubies.index(colors)
-    except Exception:
-        # TODO: reorder colors and try again
-        raise Exception("Invalid Configuration: invalid corner piece")
-    colored_cubies.remove(colors)
+    colors_2 = colors[1] + colors[2] + colors[0]
+    colors_3 = colors[2] + colors[0] + colors[1]
+
+    removed = false
+    for i in range(len(possible_corner_cubies)):
+        if possible_corner_cubies[i] == colors or possible_corner_cubies[i] == colors_2 or possible_corner_cubies[i] == colors_3:
+            if removed: 
+                raise Exception("Invalid Configuration: invalid corner piece")
+            possible_corner_cubies.pop(i)
+            i -= 1
+            removed = true
+    if not removed:
+        raise Exception("Invalid Configuration: invlaid corner piece")
+
     corner_cubies.append(cubie_of_color(colors))
     corner_o.append(corner_orientation(colors))
 
 # Determines edge cubie positions in edge cubicles
 for cubicle in edge_cubicles:
     colors = color_in_cubicle(cubicle)
-    try:
-        colored_cubies.index(colors)
-    except Exception:
-        # TODO: reorder colors and try again
-        raise Exception("Invalid Configuration: invalid edge piece")
+    colors_inv = colors[1] + colors[0]
+
+    removed = false
+    for i in range(len(possible_edge_cubies)):
+        if possible_edge_cubies[i] == colors or possible_edge_cubies[i] == color_inv:
+            if removed:
+                raise Exception("Invalid configuration: Incorrect edge piece")
+            possible_edge_cubies.pop(i)
+            i -= 1
+            removed = true
+    if not removed:
+        raise Exception("Invalid Configuration: invlaid corner piece")
+
     edge_cubies.append(cubie_of_color(colors))
     edge_cubies.append(edge_orientation(colors))
 
@@ -145,7 +163,7 @@ def rotate(affected_c, affected_e):
 def R():
     rotate([6,1,2,7],[1,5,9,6])
 
-def R_p():
+def R_pr():
     rotate([7,2,1,6],[6,9,5,1])
 
 def F():
