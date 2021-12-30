@@ -17,7 +17,6 @@ edge_o = []
 
 possible_corner_cubies = ["yog","ybo", "yrb", "ygr", "wbr", "wob", "wgo", "wrg"]
 possible_edge_cubies = ["wr", "wb", "wo", "wg", "yr", "yb", "yo", "yg", "gr", "rb", "bo", "og"]
-#colored_cubies = ["wr", "wb", "wo", "wg", "wbr", "wbo", "wgr", "wgo", "br", "bo", "gr", "go", "yr", "yb", "yo", "yg", "ybr", "ybo", "ygr", "ygo"]
 
 
 
@@ -85,7 +84,6 @@ def cubie_of_color(colors):
         cubie.append(translator[i])
     return cubie
 
-
 ## PARSE JSON FILE
 import json
 
@@ -94,19 +92,22 @@ cube = json.load(open('solved.json',))
 # Determines corner cubie positions in corner cubicles
 for cubicle in corner_cubicles:
     colors = color_in_cubicle(cubicle)
+    colors_1 = colors[0] + colors[1] + colors[2]
     colors_2 = colors[1] + colors[2] + colors[0]
     colors_3 = colors[2] + colors[0] + colors[1]
 
-    removed = false
+
+    removed = False
     for i in range(len(possible_corner_cubies)):
-        if possible_corner_cubies[i] == colors or possible_corner_cubies[i] == colors_2 or possible_corner_cubies[i] == colors_3:
+        if removed:
+            i -= 1
+        if possible_corner_cubies[i] == colors_1 or possible_corner_cubies[i] == colors_2 or possible_corner_cubies[i] == colors_3:
             if removed: 
                 raise Exception("Invalid Configuration: invalid corner piece")
             possible_corner_cubies.pop(i)
-            i -= 1
-            removed = true
+            removed = True
     if not removed:
-        raise Exception("Invalid Configuration: invlaid corner piece")
+        raise Exception("Invalid Configuration: corner piece " + colors_1 + " in cubicle " + cubicle + " is not valid")
 
     corner_cubies.append(cubie_of_color(colors))
     corner_o.append(corner_orientation(colors))
@@ -114,16 +115,18 @@ for cubicle in corner_cubicles:
 # Determines edge cubie positions in edge cubicles
 for cubicle in edge_cubicles:
     colors = color_in_cubicle(cubicle)
-    colors_inv = colors[1] + colors[0]
+    colors_1 = colors[0] + colors[1]
+    colors_2 = colors[1] + colors[0]
 
-    removed = false
+    removed = False
     for i in range(len(possible_edge_cubies)):
-        if possible_edge_cubies[i] == colors or possible_edge_cubies[i] == color_inv:
+        if removed:
+            i -= 1
+        if possible_edge_cubies[i] == colors_1 or possible_edge_cubies[i] == colors_2:
             if removed:
                 raise Exception("Invalid configuration: Incorrect edge piece")
             possible_edge_cubies.pop(i)
-            i -= 1
-            removed = true
+            removed = True
     if not removed:
         raise Exception("Invalid Configuration: invlaid corner piece")
 
@@ -131,8 +134,8 @@ for cubicle in edge_cubicles:
     edge_cubies.append(edge_orientation(colors))
 
 # Check validity of cubies
-if colored_cubies != []:
-    raise Exception("Invalid Configuration: this should never be thrown")
+if possible_corner_cubies != [] or possible_edge_cubies != []:
+    raise Exception("Invalid Configuration: this error should never be thrown")
 
 
 ## ROTATIONS
@@ -197,4 +200,16 @@ def D_pr():
     rotate([5,4,7,6],[8,9,10,11])
 
 
-## TODO: VALID CONFIGURATIONS
+## VALID CONFIGURATIONS
+
+x = 0
+for i in corner_o:
+    x += i
+if x % 3 != 0:
+    raise Exception("Invalid Configuration: The pieces are are valid but the corners are not oriented correctly")
+
+y = 0
+for j in edge_o:
+    x += j
+if y % 2 != 0:
+    raise Exception("Invalid Configuration: The pieces are are valid but the edges are not oriented correctly")
