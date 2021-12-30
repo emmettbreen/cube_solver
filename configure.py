@@ -1,4 +1,4 @@
-## RUBIX SIMULATOR
+## Rubix cube is represented as 8 corner cubies with 3 colors and 12 edge cubies with 2 colors
 
 # position
 
@@ -13,7 +13,7 @@ edge_cubicles = ["ub", "ur", "uf", "ul", "lb", "rb", "rf", "lf", "db", "dr", "df
 corner_o = []
 edge_o = []
 
-# list of accpeted colors of cubies
+# accpeted colors of cubies
 
 possible_corner_cubies = ["yog","ybo", "yrb", "ygr", "wbr", "wob", "wgo", "wrg"]
 possible_edge_cubies = ["wr", "wb", "wo", "wg", "yr", "yb", "yo", "yg", "gr", "rb", "bo", "og"]
@@ -21,6 +21,7 @@ possible_edge_cubies = ["wr", "wb", "wo", "wg", "yr", "yb", "yo", "yg", "gr", "r
 
 
 ## FUNCTIONS
+
 
 # returns a dictionary of colors to their desired face
 # a desired face for a color is where that color is the center cubie
@@ -56,6 +57,7 @@ def color_in_cubicle(cubicle):
         colors.append(cube[i][cubicle])
     return colors
 
+
 # returns 0 if first face of cubie (defined by the cubicle) has a desired color
 # returns 1 if second face of cubie (defined by cubicle) has a desired color
 # returns 2 if third face of cubie (defined by cubicle) has a desired color
@@ -70,11 +72,13 @@ def corner_orientation(colors):
 
     raise Exception("Invalid Configuration: Incorrect corner piece")
 
+
 # Requires: len(colors) = 2
 def edge_orientation(colors):
     if colors[0] == cube["u"]["u"] or colors[0] == cube["d"]["d"] or colors[1] == cube["b"]["b"] or  colors[1] == cube["f"]["f"] :
       return 0
     return 1
+
 
 # returns cubie corresponding to input colors
 def cubie_of_color(colors):
@@ -84,18 +88,19 @@ def cubie_of_color(colors):
         cubie.append(translator[i])
     return cubie
 
+
+
 ## PARSE JSON FILE
 import json
 
-cube = json.load(open('solved.json',))
+cube = json.load(open('input.json',))
 
-# Determines corner cubie positions in corner cubicles
+# Determine corner cubies
 for cubicle in corner_cubicles:
     colors = color_in_cubicle(cubicle)
     colors_1 = colors[0] + colors[1] + colors[2]
     colors_2 = colors[1] + colors[2] + colors[0]
     colors_3 = colors[2] + colors[0] + colors[1]
-
 
     removed = False
     for i in range(len(possible_corner_cubies)):
@@ -112,7 +117,7 @@ for cubicle in corner_cubicles:
     corner_cubies.append(cubie_of_color(colors))
     corner_o.append(corner_orientation(colors))
 
-# Determines edge cubie positions in edge cubicles
+# Determine edge cubies
 for cubicle in edge_cubicles:
     colors = color_in_cubicle(cubicle)
     colors_1 = colors[0] + colors[1]
@@ -136,6 +141,19 @@ for cubicle in edge_cubicles:
 # Check validity of cubies
 if possible_corner_cubies != [] or possible_edge_cubies != []:
     raise Exception("Invalid Configuration: this error should never be thrown")
+
+x = 0
+for i in corner_o:
+    x += i
+if x % 3 != 0:
+    raise Exception("Invalid Configuration: The pieces are are valid but the corners are not oriented correctly")
+
+y = 0
+for j in edge_o:
+    x += j
+if y % 2 != 0:
+    raise Exception("Invalid Configuration: The pieces are are valid but the edges are not oriented correctly")
+
 
 
 ## ROTATIONS
@@ -162,6 +180,7 @@ def rotate(affected_c, affected_e):
         edge_o[affected_e[i + 1]] = edge_o[affected_e[i]]
     edge_cubies[affected_e[0]] = temp_e_p
     edge_o[affected_e[0]] = temp_e_o
+
 
 def R():
     rotate([6,1,2,7],[1,5,9,6])
@@ -199,17 +218,3 @@ def D():
 def D_pr():
     rotate([5,4,7,6],[8,9,10,11])
 
-
-## VALID CONFIGURATIONS
-
-x = 0
-for i in corner_o:
-    x += i
-if x % 3 != 0:
-    raise Exception("Invalid Configuration: The pieces are are valid but the corners are not oriented correctly")
-
-y = 0
-for j in edge_o:
-    x += j
-if y % 2 != 0:
-    raise Exception("Invalid Configuration: The pieces are are valid but the edges are not oriented correctly")
