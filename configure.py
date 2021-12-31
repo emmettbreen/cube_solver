@@ -158,11 +158,7 @@ def configure ():
 # Requires: len(affected_c) == len(affected_e) == 4
 # Requires: len(corners) == len(corner_cubicles) == len(corner_o)
 # Requires: len(edge_cubies) == len(edge_cubicles) == len(edge_o)
-def rotate(affected_c, affected_e, corners, edges, corner_o, edge_o):
-    c = corners.copy()
-    e = edges.copy()
-    co = corner_o.copy()
-    eo = edge_o.copy()
+def rotate(affected_c, affected_e, c, e, co, eo):
     # rotate corner cubie positions and orientations
     temp_c_p = c[affected_c[3]]
     temp_c_o = co[affected_c[3]]
@@ -186,97 +182,145 @@ def rotate(affected_c, affected_e, corners, edges, corner_o, edge_o):
 # a cube is a list of [corners, edges, corner_o, edge_o, moves] which are all lists
 # all moves return a new cube with specified rotation
 def R(c):
+    c = c[0].copy()
+    e = c[1].copy()
+    co = c[2].copy()
+    eo = c[3].copy()
     moves = c[4].copy()
     moves.append("R")
-    newcube = rotate([6,1,2,7],[1,5,9,6], c[0], c[1], c[2], c[3])
+    newcube = rotate([6,1,2,7],[1,5,9,6], c, e, co, eo)
     newcube.append(moves)
     return newcube
 
 def R_pr(c):
+    c = c[0].copy()
+    e = c[1].copy()
+    co = c[2].copy()
+    eo = c[3].copy()
     moves = c[4].copy()
     moves.append("R'")
-    newcube = rotate([7,2,1,6],[6,9,5,1], c[0], c[1], c[2], c[3])
+    newcube = rotate([7,2,1,6],[6,9,5,1], c, e, co, eo)
     newcube.append(moves)
     return newcube
 
 def F(c):
+    c = c[0].copy()
+    e = c[1].copy()
+    co = c[2].copy()
+    eo = c[3].copy()
     moves = c[4].copy()
     moves.append("F")
-    newcube = rotate([0,1,6,5],[2,6,10,7], c[0], c[1], c[2], c[3])
+    newcube = rotate([0,1,6,5],[2,6,10,7], c, e, co, eo)
     newcube.append(moves)
     return newcube
 
 def F_pr(c):
+    c = c[0].copy()
+    e = c[1].copy()
+    co = c[2].copy()
+    eo = c[3].copy()
     moves = c[4].copy()
     moves.append("F'")
-    newcube = rotate([5,6,1,0],[7,10,6,2], c[0], c[1], c[2], c[3])
+    newcube = rotate([5,6,1,0],[7,10,6,2], c, e, co, eo)
     newcube.append(moves)
     return newcube
 
 def L(c):
+    c = c[0].copy()
+    e = c[1].copy()
+    co = c[2].copy()
+    eo = c[3].copy()
     moves = c[4].copy()
     moves.append("L")
-    newcube = rotate([0,5,4,3],[3,7,11,4], c[0], c[1], c[2], c[3])
+    newcube = rotate([0,5,4,3],[3,7,11,4], c, e, co, eo)
     newcube.append(moves)
     return newcube
 
 def L_pr(c):
+    c = c[0].copy()
+    e = c[1].copy()
+    co = c[2].copy()
+    eo = c[3].copy()
     moves = c[4].copy()
     moves.append("L'")
-    newcube = rotate([3,4,5,0],[4,11,7,3], c[0], c[1], c[2], c[3])
+    newcube = rotate([3,4,5,0],[4,11,7,3], c, e, co, eo)
     newcube.append(moves)
     return newcube
 
 def U(c):
+    c = c[0].copy()
+    e = c[1].copy()
+    co = c[2].copy()
+    eo = c[3].copy()
     moves = c[4].copy()
     moves.append("U")
-    newcube = rotate([0,3,2,1],[0,1,2,3], c[0], c[1], c[2], c[3])
+    newcube = rotate([0,3,2,1],[0,1,2,3], c, e, co, eo)
     newcube.append(moves)
     return newcube
 
 def U_pr(c):
+    c = c[0].copy()
+    e = c[1].copy()
+    co = c[2].copy()
+    eo = c[3].copy()
     moves = c[4].copy()
     moves.append("U'")
-    newcube = rotate([1,2,3,0],[3,2,1,0], c[0], c[1], c[2], c[3])
+    newcube = rotate([1,2,3,0],[3,2,1,0], c, e, co, eo)
     newcube.append(moves)
     return newcube
 
 def B(c):
+    c = c[0].copy()
+    e = c[1].copy()
+    co = c[2].copy()
+    eo = c[3].copy()
     moves = c[4].copy()
     moves.append("B")
-    newcube = rotate([3,4,7,2],[0,4,8,5], c[0], c[1], c[2], c[3])
+    newcube = rotate([3,4,7,2],[0,4,8,5], c, e, co, eo)
     newcube.append(moves)
     return newcube
 
 def B_pr(c):
+    c = c[0].copy()
+    e = c[1].copy()
+    co = c[2].copy()
+    eo = c[3].copy()
     moves = c[4].copy()
     moves.append("B'")
-    newcube = rotate([2,7,4,3],[5,8,4,0], c[0], c[1], c[2], c[3])
+    newcube = rotate([2,7,4,3],[5,8,4,0], c, e, co, eo)
     newcube.append(moves)
     return newcube
 
 def D(c):
+    c = c[0].copy()
+    e = c[1].copy()
+    co = c[2].copy()
+    eo = c[3].copy()
     moves = c[4].copy()
     moves.append("D")
-    newcube = rotate([6,7,4,5],[11,10,9,8], c[0], c[1], c[2], c[3])
+    newcube = rotate([6,7,4,5],[11,10,9,8], c, e, co, eo)
     newcube.append(moves)
     return newcube
 
 def D_pr(c):
+    c = c[0].copy()
+    e = c[1].copy()
+    co = c[2].copy()
+    eo = c[3].copy()
     moves = c[4].copy()
     moves.append("D'")    
-    newcube = rotate([5,4,7,6],[8,9,10,11], c[0], c[1], c[2], c[3])
+    newcube = rotate([5,4,7,6],[8,9,10,11], c, e, co, eo)
     newcube.append(moves)
     return newcube
 
 
 def is_solved(corners, edges):
     for i in range(len(corner_cubicles)):
-        #print("" + (str)(corner_cubies[i]) + " " + corner_cubicles[i])
+        print(corners[i] + " " + corner_cubicles[i])
         if corners[i] != corner_cubicles[i]:
             return False
     for j in range(len(edge_cubicles)):
-        #print("" + edge_cubies[j] + " " + edge_cubicles[j])
+        print(edges[j] + " " + edge_cubicles[j])
         if edges[j] != edge_cubicles[j]:
             return False
     return True
