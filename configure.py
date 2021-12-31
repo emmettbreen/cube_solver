@@ -156,125 +156,146 @@ def configure ():
 
 
 # Requires: len(affected_c) == len(affected_e) == 4
-# Requires: len(corner_cubies) == len(corner_cubicles) == len(corner_o)
+# Requires: len(corners) == len(corner_cubicles) == len(corner_o)
 # Requires: len(edge_cubies) == len(edge_cubicles) == len(edge_o)
-def rotate(affected_c, affected_e):
+def rotate(affected_c, affected_e, corners, edges, corner_o, edge_o):
 
     # rotate corner cubie positions and orientations
-    temp_c_p = corner_cubies[affected_c[3]]
+    temp_c_p = corners[affected_c[3]]
     temp_c_o = corner_o[affected_c[3]]
     for i in range(len(affected_c) - 2):
-        corner_cubies[affected_c[i + 1]] = corner_cubies[affected_c[i]]
+        corners[affected_c[i + 1]] = corners[affected_c[i]]
         corner_o[affected_c[i + 1]] = corner_o[affected_c[i]]
-    corner_cubies[affected_c[0]] = temp_c_p
+    corners[affected_c[0]] = temp_c_p
     corner_o[affected_c[0]] = temp_c_o
 
     # rotate edge cubie positions and orientations
-    temp_e_p = edge_cubies[affected_e[3]]
+    temp_e_p = edges[affected_e[3]]
     temp_e_o = edge_o[affected_e[3]]
     for i in range(len(affected_e) - 2):
-        edge_cubies[affected_e[i + 1]] = edge_cubies[affected_e[i]]
+        edges[affected_e[i + 1]] = edges[affected_e[i]]
         edge_o[affected_e[i + 1]] = edge_o[affected_e[i]]
-    edge_cubies[affected_e[0]] = temp_e_p
+    edges[affected_e[0]] = temp_e_p
     edge_o[affected_e[0]] = temp_e_o
 
+    return [corners, edges, corner_o, edge_o]
 
-def R():
-    rotate([6,1,2,7],[1,5,9,6])
+# a cube is a list of [corners, edges, corner_o, edge_o, moves] which are all lists
+# all moves return a new cube with specified rotation
+def R(cube):
+    cube[4].append("R")
+    newcube = rotate([6,1,2,7],[1,5,9,6], cube[0], cube[1], cube[2], cube[3])
+    newcube.append(cube[4])
+    return newcube
 
-def R_pr():
-    rotate([7,2,1,6],[6,9,5,1])
+def R_pr(cube):
+    cube[4].append("R'")
+    newcube = rotate([7,2,1,6],[6,9,5,1], cube[0], cube[1], cube[2], cube[3])
+    newcube.append(cube[4])
+    return newcube
 
-def F():
-    rotate([0,1,6,5],[2,6,10,7])
+def F(cube):
+    cube[4].append("F")
+    newcube = rotate([0,1,6,5],[2,6,10,7], cube[0], cube[1], cube[2], cube[3])
+    newcube.append(cube[4])
+    return newcube
 
-def F_pr():
-    rotate([5,6,1,0],[7,10,6,2])
+def F_pr(cube):
+    cube[4].append("F'")
+    newcube = rotate([5,6,1,0],[7,10,6,2], cube[0], cube[1], cube[2], cube[3])
+    newcube.append(cube[4])
+    return newcube
 
-def L():
-    rotate([0,5,4,3],[3,7,11,4])
+def L(cube):
+    cube[4].append("L")
+    newcube = rotate([0,5,4,3],[3,7,11,4], cube[0], cube[1], cube[2], cube[3])
+    newcube.append(cube[4])
+    return newcube
 
-def L_pr():
-    rotate([3,4,5,0],[4,11,7,3])
+def L_pr(cube):
+    cube[4].append("L'")
+    newcube = rotate([3,4,5,0],[4,11,7,3], cube[0], cube[1], cube[2], cube[3])
+    newcube.append(cube[4])
+    return newcube
 
-def U():
-    rotate([0,3,2,1],[0,1,2,3])
+def U(cube):
+    cube[4].append("U")
+    newcube = rotate([0,3,2,1],[0,1,2,3], cube[0], cube[1], cube[2], cube[3])
+    newcube.append(cube[4])
+    return newcube
 
-def U_pr():
-    rotate([1,2,3,0],[3,2,1,0])
+def U_pr(cube):
+    cube[4].append("U'")
+    newcube = rotate([1,2,3,0],[3,2,1,0], cube[0], cube[1], cube[2], cube[3])
+    newcube.append(cube[4])
+    return newcube
 
-def B():
-    rotate([3,4,7,2],[0,4,8,5])
+def B(cube):
+    cube[4].append("B")
+    newcube = rotate([3,4,7,2],[0,4,8,5], cube[0], cube[1], cube[2], cube[3])
+    newcube.append(cube[4])
+    return newcube
 
-def B_pr():
-    rotate([2,7,4,3],[5,8,4,0])
+def B_pr(cube):
+    cube[4].append("B'")
+    newcube = rotate([2,7,4,3],[5,8,4,0], cube[0], cube[1], cube[2], cube[3])
+    newcube.append(cube[4])
+    return newcube
 
-def D():
-    rotate([6,7,4,5],[11,10,9,8])
+def D(cube):
+    cube[4].append("D")
+    newcube = rotate([6,7,4,5],[11,10,9,8], cube[0], cube[1], cube[2], cube[3])
+    newcube.append(cube[4])
+    return newcube
 
-def D_pr():
-    rotate([5,4,7,6],[8,9,10,11])
+def D_pr(cube):
+    cube[4].append("D'")    
+    newcube = rotate([5,4,7,6],[8,9,10,11], cube[0], cube[1], cube[2], cube[3])
+    newcube.append(cube[4])
+    return newcube
 
 
-def is_solved():
+def is_solved(corners, edges):
     for i in range(len(corner_cubicles)):
         #print("" + (str)(corner_cubies[i]) + " " + corner_cubicles[i])
-        if corner_cubies[i] != corner_cubicles[i]:
+        if corners[i] != corner_cubicles[i]:
             return False
     for j in range(len(edge_cubicles)):
         #print("" + edge_cubies[j] + " " + edge_cubicles[j])
-        if edge_cubies[j] != edge_cubicles[j]:
+        if edges[j] != edge_cubicles[j]:
             return False
     return True
 
 
+
 ## SOLVE
 
-visited = []
-queue = []
-def bfs(visited, graph, node):
-    visited.append(node)
-    queue.apppend(node)
-    while queue:
-        s = queue.pop(0)
+# a cube is a list of [corners, edges, corner_o, edge_o, moves] which are all lists
+def solve(cube, counter):
+    if counter > 19:
+        return cube[4]
 
-        for neighbor in graph[s]:
-            if neighbor not in visited:
-                visited.append(neighbor)
-                queue.append(neighbor)
+    if is_solved(cube[0], cube[1]):
+        return cube[4]
 
-def solve():
-    if is_solved():
-        return ["No maneuvers needed!"]
+    solve(R(cube), counter + 1)
+    solve(R_pr(cube), counter + 1)
 
-    R()
-    if is_solved():
-        return ["R"]
-    R_pr()
+    solve(U(cube), counter + 1)
+    solve(U_pr(cube), counter + 1)
 
-    U()
-    if is_solved():
-        return ["U"]
-    U_pr()
-    return ["unimplemented"]
+    solve(F(cube), counter + 1)
+    solve(F_pr(cube), counter + 1)
 
+    solve(B(cube), counter + 1)
+    solve(B_pr(cube), counter + 1)
 
-class Node:
-    def __init__(self, rot):
-        self.rot = rot
-        self.R = None
-        self.R_pr = None
-        self.F = None
-        self.F_pr = None
-        self.U = None
-        self.U_pr = None
-        self.B = None
-        self.B_pr = None
-        self.D = None
-        self.D_pr = None
-        self.L = None
-        self.L_pr = None
+    solve(D(cube), counter + 1)
+    solve(D_pr(cube), counter + 1)
 
+    solve(L(cube), counter + 1)
+    solve(L_pr(cube), counter + 1)
+    return
 
 
 ## run functions
@@ -289,9 +310,9 @@ except Exception as message:
 
 if valid:
     print("Beginning solve....\n")
-    maneuvers = solve()
-    print("Solved!\n")
-    for i in maneuvers:
+    moves, count = solve([corner_cubies, edge_cubies, corner_o, edge_o, []], 0)
+    print("Solution found with " + count + " moves!")
+    for i in moves:
         print(i + " ")
 
 
