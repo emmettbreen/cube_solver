@@ -86,10 +86,11 @@ def edge_orientation(colors):
 
 # returns cubie corresponding to input colors
 def cubie_of_color(colors):
-    cubie = []
+    cubie = ""
     translator = color_to_face()
     for i in colors:
-        cubie.append(translator[i])
+        cubie += translator[i]
+    
     return cubie
 
 
@@ -135,7 +136,7 @@ def configure ():
             raise Exception("Invalid Configuration: invalid corner piece")
 
         edge_cubies.append(cubie_of_color(colors))
-        edge_cubies.append(edge_orientation(colors))
+        edge_o.append(edge_orientation(colors))
 
     # Check validity of cubies
     if possible_corner_cubies != [] or possible_edge_cubies != []:
@@ -161,7 +162,7 @@ def rotate(affected_c, affected_e):
 
     # rotate corner cubie positions and orientations
     temp_c_p = corner_cubies[affected_c[3]]
-    temo_c_o = corner_o[affected_c[3]]
+    temp_c_o = corner_o[affected_c[3]]
     for i in range(len(affected_c) - 2):
         corner_cubies[affected_c[i + 1]] = corner_cubies[affected_c[i]]
         corner_o[affected_c[i + 1]] = corner_o[affected_c[i]]
@@ -217,16 +218,66 @@ def D_pr():
 
 def is_solved():
     for i in range(len(corner_cubicles)):
+        #print("" + (str)(corner_cubies[i]) + " " + corner_cubicles[i])
         if corner_cubies[i] != corner_cubicles[i]:
             return False
     for j in range(len(edge_cubicles)):
+        #print("" + edge_cubies[j] + " " + edge_cubicles[j])
         if edge_cubies[j] != edge_cubicles[j]:
             return False
     return True
 
 
+## SOLVE
 
-## BEGIN SOLVE
+visited = []
+queue = []
+def bfs(visited, graph, node):
+    visited.append(node)
+    queue.apppend(node)
+    while queue:
+        s = queue.pop(0)
+
+        for neighbor in graph[s]:
+            if neighbor not in visited:
+                visited.append(neighbor)
+                queue.append(neighbor)
+
+def solve():
+    if is_solved():
+        return ["No maneuvers needed!"]
+
+    R()
+    if is_solved():
+        return ["R"]
+    R_pr()
+
+    U()
+    if is_solved():
+        return ["U"]
+    U_pr()
+    return ["unimplemented"]
+
+
+class Node:
+    def __init__(self, rot):
+        self.rot = rot
+        self.R = None
+        self.R_pr = None
+        self.F = None
+        self.F_pr = None
+        self.U = None
+        self.U_pr = None
+        self.B = None
+        self.B_pr = None
+        self.D = None
+        self.D_pr = None
+        self.L = None
+        self.L_pr = None
+
+
+
+## run functions
 
 valid = True
 try:
@@ -238,8 +289,10 @@ except Exception as message:
 
 if valid:
     print("Beginning solve....\n")
-
-
+    maneuvers = solve()
+    print("Solved!\n")
+    for i in maneuvers:
+        print(i + " ")
 
 
 
