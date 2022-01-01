@@ -85,13 +85,31 @@ def edge_orientation(colors):
 
 
 # returns cubie corresponding to input colors
-def cubie_of_color(colors):
-    cubie = ""
+def corner_cubie_of_color(colors):
     translator = color_to_face()
-    for i in colors:
-        cubie += translator[i]
-    
-    return cubie
+    cubies = ["ufl", "urf", "ubr", "ulb", "dbl", "dlf", "dfr", "drb"]
+    for c in colors:
+        face = translator[c]
+        removed = 0
+        for i in range(len(cubies)):
+            i -= removed
+            if cubies[i][0] != face and cubies[i][1] != face and cubies[i][2] != face:
+                removed += 1
+                cubies.pop(i)
+    return cubies[0]
+
+def edge_cubie_of_color(colors):
+    translator = color_to_face()
+    cubies = ["ub", "ur", "uf", "ul", "lb", "rb", "rf", "lf", "db", "dr", "df", "dl"]
+    for c in colors:
+        face = translator[c]
+        removed = 0
+        for i in range(len(cubies)):
+            i -= removed
+            if cubies[i][0] != face and cubies[i][1] != face:
+                removed += 1
+                cubies.pop(i)
+    return cubies[0]
 
 
 def configure ():
@@ -114,7 +132,7 @@ def configure ():
         if not removed:
             raise Exception("Invalid Configuration: corner piece " + colors_1 + " in cubicle " + cubicle + " is not valid")
 
-        corner_cubies.append(cubie_of_color(colors))
+        corner_cubies.append(corner_cubie_of_color(colors))
         corner_o.append(corner_orientation(colors))
 
     # Determine edge cubies
@@ -135,7 +153,7 @@ def configure ():
         if not removed:
             raise Exception("Invalid Configuration: invalid corner piece")
 
-        edge_cubies.append(cubie_of_color(colors))
+        edge_cubies.append(edge_cubie_of_color(colors))
         edge_o.append(edge_orientation(colors))
 
     # Check validity of cubies
@@ -163,8 +181,8 @@ def rotate(affected_c, affected_e, c, e, co, eo):
     temp_c_p = c[affected_c[3]]
     temp_c_o = co[affected_c[3]]
     for i in range(len(affected_c) - 1):
-        c[affected_c[i + 1]] = c[affected_c[i]]
-        co[affected_c[i + 1]] = co[affected_c[i]]
+        c[affected_c[3-i]] = c[affected_c[2-i]]
+        co[affected_c[3-i]] = co[affected_c[2-i]]
     c[affected_c[0]] = temp_c_p
     co[affected_c[0]] = temp_c_o
 
@@ -172,8 +190,8 @@ def rotate(affected_c, affected_e, c, e, co, eo):
     temp_e_p = e[affected_e[3]]
     temp_e_o = eo[affected_e[3]]
     for i in range(len(affected_e) - 1):
-        e[affected_e[i + 1]] = e[affected_e[i]]
-        eo[affected_e[i + 1]] = eo[affected_e[i]]
+        e[affected_e[3-i]] = e[affected_e[2-i]]
+        eo[affected_e[3-i]] = eo[affected_e[2-i]]
     e[affected_e[0]] = temp_e_p
     eo[affected_e[0]] = temp_e_o
 
@@ -266,8 +284,10 @@ def D_pr(c):
     return newcube
 
 def is_solved(corners, edges):
+    #print(corners)
+    #print(corner_cubicles)
     for i in range(len(corner_cubicles)):
-        print(corners[i] + " " + corner_cubicles[i])
+        #print(corners[i] + " " + corner_cubicles[i])
         if corners[i] != corner_cubicles[i]:
             return False
     for j in range(len(edge_cubicles)):
@@ -295,7 +315,7 @@ def solve(c):
 
     while len(queue) > 0 and len(queue[0][4]) <= 20:
         state = queue.pop(0)
-        print(state[4])
+        #print(state[4])
         if is_solved(state[0], state[1]):
             return state[4]
 
@@ -353,38 +373,7 @@ if valid:
     #print(corner_cubies)
     #print(edge_cubies)
     solution = solve([corner_cubies, edge_cubies, corner_o, edge_o, []])
-    print("Solution found with " + len(solution) + " moves!")
+    print("Solution found with " + (str)(len(solution)) + " moves!\n")
     for i in solution:
-        print(i + " ")
-
-
-
-
-
-
-
-    '''if counter > 19:
-        return cube[4]
-
-    if is_solved(cube[0], cube[1]):
-        return cube[4]
-
-    solve(R(cube), counter + 1)
-    solve(R_pr(cube), counter + 1)
-
-    solve(U(cube), counter + 1)
-    solve(U_pr(cube), counter + 1)
-
-    solve(F(cube), counter + 1)
-    solve(F_pr(cube), counter + 1)
-
-    solve(B(cube), counter + 1)
-    solve(B_pr(cube), counter + 1)
-
-    solve(D(cube), counter + 1)
-    solve(D_pr(cube), counter + 1)
-
-    solve(L(cube), counter + 1)
-    solve(L_pr(cube), counter + 1)
-    return'''
+        print(i)
 
