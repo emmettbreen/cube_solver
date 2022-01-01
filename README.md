@@ -20,11 +20,11 @@ Next Steps:
 - create a frontend to make the input of colors more visual, possibly using Python GUIs or Javascript/Node
 - optimize thr backend using pruning techniques to make the algorithm useful for any scramble
 
-Json Inputs:
+Json Input Example:
 
-<img width="150" height = "600" src="https://user-images.githubusercontent.com/90010213/147861550-fa9141ed-304f-426b-818f-9e14e502ec47.png">
+<img width="150" height = "630" src="https://user-images.githubusercontent.com/90010213/147861550-fa9141ed-304f-426b-818f-9e14e502ec47.png">
 
 
-Terminal Output:
+Terminal Output Example:
 
-<img width="450" height="400" src="https://user-images.githubusercontent.com/90010213/147861559-1c2c6a25-efb4-4ef4-8109-b29821a77068.png">
+<img width="450" height="370" src="https://user-images.githubusercontent.com/90010213/147861559-1c2c6a25-efb4-4ef4-8109-b29821a77068.png">
