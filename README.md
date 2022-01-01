@@ -8,13 +8,14 @@ This project is capable of solving any traditional 3x3 rubix cube. It is current
 - configures a backend model that translates the color inputs to a functional rubix cube
 - confirms whether the configuration is valid
 - (currently) uses a brute force algorithm in a breadth-first-search style to return the needed rotations to solve the cube
-  - due to the exponential nature of rubix cube configurations, the algorithm is only quick at solving scrambles of < 5 moves
+  - due to the exponential nature of the rubix cube configuration tree, the algorithm is only quick (and feasible) for solving scrambles of <= 5 moves
 
 
 My main takeaways from this project were:
 
 - self-taught group theory and abstract algebra topics to model the nature of the cube
-- NP complete problems and nondeterministic brute force solutions as a starting point to begin optimizing
+- algorithm complexity theory and NP complete problems
+- nondeterministic brute force solutions as a starting point to a feasible solution
 
 Next Steps:
 - create a frontend to make the input of colors more visual, possibly using Python GUIs or Javascript/Node
