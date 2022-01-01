@@ -22,11 +22,9 @@ Next Steps:
 
 Json Inputs:
 
-<img width="150" height="500" src="https://user-images.githubusercontent.com/90010213/147855448-8dd7d9f2-05be-4eb9-bc3e-0abcf1666cdf.png">
-<img width="150" height = "500" src="https://user-images.githubusercontent.com/90010213/147861550-fa9141ed-304f-426b-818f-9e14e502ec47.png">
+<img width="150" height = "600" src="https://user-images.githubusercontent.com/90010213/147861550-fa9141ed-304f-426b-818f-9e14e502ec47.png">
 
 
 Terminal Output:
 
-<img width="400" height="200" src="https://user-images.githubusercontent.com/90010213/147855349-edb5c9a3-caad-4d64-a971-d5b144556c07.png">
 <img width="450" height="400" src="https://user-images.githubusercontent.com/90010213/147861559-1c2c6a25-efb4-4ef4-8109-b29821a77068.png">
