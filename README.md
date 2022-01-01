@@ -22,5 +22,6 @@ Next Steps:
 
 Json Input:
 <img width="150" height="500" src="https://user-images.githubusercontent.com/90010213/147855448-8dd7d9f2-05be-4eb9-bc3e-0abcf1666cdf.png">
+
 Terminal Output:
 <img width="400" height="200" src="https://user-images.githubusercontent.com/90010213/147855349-edb5c9a3-caad-4d64-a971-d5b144556c07.png">
