@@ -22,6 +22,15 @@ Next Steps:
 - create a frontend to make the input of colors more visual, possibly using Python GUIs or Javascript/Node
 - optimize thr backend using pruning techniques to make the algorithm useful for any scramble
 
+## How to use
+1. Download the source code
+2. Scramble a rubix cube with up to 5 moves
+3. Take any side as the front face, and input the color of each piece into the json file (just the first letter: example blue -> b)
+  - If you have trouble with the naming convention, read the first pages of https://web.mit.edu/sp.268/www/rubik.pdf
+  - Example: the first entry in the json file is f, ufl which means input the color (just the first letter) of the front side of the piece that belongs to the front, up, and left sides
+5. Open the terminal and run python3 solver.py
+6. The algorithm will take a couple of seconds, and will return the moves needed to solve the cube when holding the it as the user specified in the input
+
 ## Screenshots
 
 <img width="150" height = "630" src="https://user-images.githubusercontent.com/90010213/147861550-fa9141ed-304f-426b-818f-9e14e502ec47.png"> <img width="450" height="370" src="https://user-images.githubusercontent.com/90010213/147861559-1c2c6a25-efb4-4ef4-8109-b29821a77068.png">
