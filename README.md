@@ -27,7 +27,7 @@ Next Steps:
 2. Scramble a rubix cube with up to 5 moves
 3. Take any side as the front face, and input the color of each piece into the json file (just the first letter: example blue -> b)
   - If you have trouble with the naming convention, read the first pages of https://web.mit.edu/sp.268/www/rubik.pdf
-  - Example: the first entry in the json file is f, ufl which means input the color (just the first letter) of the front side of the piece that belongs to the front, up, and left sides
+  - Example: the first entry in the json file is f, ufl. For this entry, input the color (just the first letter) of the front side of the piece that belongs to the front, up, and left sides
 5. Open the terminal and run python3 solver.py
 6. The algorithm will take a couple of seconds, and will return the moves needed to solve the cube when holding the it as the user specified in the input
 
