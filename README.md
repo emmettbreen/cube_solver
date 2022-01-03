@@ -28,6 +28,6 @@ Next Steps:
 
 ## References
 
-https://people.math.harvard.edu/~jjchen/docs/Group%20Theory%20and%20the%20Rubik's%20Cube.pdf
-https://kociemba.org/cube.htm
-https://www.youtube.com/watch?v=L0dP4lNDqTU
+- https://people.math.harvard.edu/~jjchen/docs/Group%20Theory%20and%20the%20Rubik's%20Cube.pdf
+- https://kociemba.org/cube.htm
+- https://www.youtube.com/watch?v=L0dP4lNDqTU
