@@ -1,4 +1,5 @@
-# Cube Solver, 2022
+# Cube Solver
+## 2022
 
 Phase: In development
 
