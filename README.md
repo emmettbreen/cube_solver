@@ -1,8 +1,6 @@
 # Cube Solver
 ## 2022
 
-Phase: In development
-
 This project is capable of solving any traditional 3x3 rubix cube. It is currently a purely backend piece of code that uses jsons as input and the terminal as output. As-is, the Python code:
 
 - takes in a json file with specified colors on each face
