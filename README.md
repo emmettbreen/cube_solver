@@ -18,7 +18,7 @@ My main takeaways from this project were:
 
 Next Steps:
 - create a frontend to make the input of colors more visual, possibly using Python GUIs or Javascript/Node
-- optimize thr backend using pruning techniques to make the algorithm useful for any scramble
+- optimize the backend using pruning techniques to make the algorithm useful for any scramble
 
 ## How to use
 1. Download the source code
